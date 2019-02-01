@@ -33,10 +33,17 @@ class App extends Component {
       });
   }
 
+  postNewSmurf = smurf => {
+    axios
+      .post(`${baseUrl}/smurfs`, smurf)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+  };
+
   render() {
     return (
       <div className="App">
-        <SmurfForm />
+        <SmurfForm postNewSmurf={this.postNewSmurf} />
         <Smurfs smurfs={this.state.smurfs} />
       </div>
     );
